@@ -15,7 +15,7 @@ if (! require(RMariaDB)) {
   library(RMariaDB)
 }
 if (! require(dplyr)) {
-  install.packages('dyplyr')
+  install.packages('dplyr')
   library(dplyr)
 }
 ```
