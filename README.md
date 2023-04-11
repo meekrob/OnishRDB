@@ -23,6 +23,12 @@ if (! require(dplyr)) {
 
 ## Usage
 
+Simply source the script accompanying the data object you want to import.
+
+### DBPeakOverlaps
+
+DBPeakOverlaps.R defines an object DBPeakOverlaps by aggregating a table of peak/promoter intersections. The data are cached using `R.cache`, so sourcing the file again will just load the data from a cache location.
+
 ```
 > source('DBPeakOverlaps.R')
 loading ac3be2fcc75ebff443aa858f2722233c.Rcache 
@@ -44,7 +50,13 @@ Loading DBPeakOverlaps from cache
 10 B0019.2            0            0       0       0       1       0       0       0       1
 # … with abbreviated variable names ¹​`blmp-1_L1_1`, ²​`ceh-13_EE_1`, ³​`ceh-28_L3_1`,
 #   ⁴​`ceh-31_LE_1`, ⁵​`ces-1_EM_1`, ⁶​`cnd-1_EM_1`, ⁷​`daf-16_L4_1`, ⁸​`dpl-1_L1_1`
+```
+The above output is given by the script itself. 
 
+The following code confirms the creation of the object in your environment, and calls `dim()` on it.
+```
+> "DBPeakOverlaps" %in% ls()
+[1] TRUE
 > dim(DBPeakOverlaps)
 [1] 13703   474
 ```
