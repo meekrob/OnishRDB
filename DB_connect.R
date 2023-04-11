@@ -1,9 +1,11 @@
-### add here
+### read-only access
 ONISHDB_USERNAME="worm"
 ONISHDB_HOST="129.82.125.11"
 ###
 
 library(dplyr)
+library(R.cache)
+library(RMariaDB)
 
 # less commonly installed?
 if (! require(R.cache)) {
