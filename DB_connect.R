@@ -1,11 +1,9 @@
-### read-only access
+### add here
 ONISHDB_USERNAME="worm"
 ONISHDB_HOST="129.82.125.11"
 ###
 
 library(dplyr)
-library(R.cache)
-library(RMariaDB)
 
 # less commonly installed?
 if (! require(R.cache)) {
@@ -16,7 +14,31 @@ if (! require(RMariaDB)) {
   install.packages('RMariaDB')
   library(RMariaDB)
 }
-
+# wrap R.cache to show cache size
+loadCache = function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL,
+                     dirs=NULL, ..., onError=c("warning", "error", "message", "quiet", "print"),
+                     showCacheDirSize = TRUE) {
+  cachepath = R.cache::findCache(key)
+  if (showCacheDirSize) {
+    cat("loading", basename(cachepath),"\n")
+    cat("total cache size:")
+    system(paste("du -kh -d 0", getCacheRootPath()))
+  }
+  return(R.cache::loadCache(key,sources,suffix, removeOldCache, pathname, dirs, ..., onError))
+}
+saveCache = function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL,
+                     dirs=NULL, compress=NULL, ..., showCacheDirSize=TRUE) {
+  
+  cachepath = R.cache::saveCache(object, key, sources, suffix, comment, pathname,
+                                 dirs, compress=NULL, ...)
+  
+  if (showCacheDirSize) {
+    dirname(cachepath)
+    system(paste("du -kh -d 0", getCacheRootPath()))
+  }
+  
+  return(cachepath)
+}
 onishDBListDBs <- function(onishDATA) {
   dbIDs = dbListObjects(onishDATA) %>% filter(is_prefix == TRUE) %>% pull(name)
   dbNames = unlist(lapply(dbIDs, function(x) x@name))
