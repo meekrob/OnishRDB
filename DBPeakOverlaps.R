@@ -14,16 +14,15 @@ if (!is.null(DBPeakOverlaps)) {
 { # recalculate
   
   # load saved table if available
-  cat("DBPeakOverlaps not cached... Checking for cached table from DB.")
+  cat("DBPeakOverlaps not cached... Checking for cached table from DB.\n")
   key = list("AllPromoter_binding")
   AllPromoter_binding <- loadCache(key)
   if (is.null(AllPromoter_binding)){
-    cat("DB table not cached. Connecting to database.")
-    onishDATA = onishDBConnect()
-    AllPromoter_binding = dbReadTableCached(onishDATA, "AllPromoter_binding")
-    dbDisconnect(onishDATA)
+    
+    AllPromoter_binding = dbReadTableCached("AllPromoter_binding", "NishimuraLab")
+    
   }
-  cat("combining overlaps...")
+  cat("combining overlaps...\n")
   # aggregate overlaps by gene, ChIP-seq experiment
   overlapping = AllPromoter_binding %>% group_by(name, tfStage) %>% summarize(n=n()) 
   

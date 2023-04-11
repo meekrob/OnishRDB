@@ -19,7 +19,7 @@ loadCache = function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TR
                      dirs=NULL, ..., onError=c("warning", "error", "message", "quiet", "print"),
                      showCacheDirSize = TRUE) {
   cachepath = R.cache::findCache(key)
-  if (showCacheDirSize) {
+  if (showCacheDirSize && (! is.null(cachepath))) {
     cat("loading", basename(cachepath),"\n")
     cat("total cache size:")
     system(paste("du -kh -d 0", getCacheRootPath()))
@@ -67,7 +67,7 @@ onishDBConnect<- function(dbName = "NishimuraLab") {
     port = 3307, dbName = dbName,
     timeout = 30
   )  
-  cat("done connecting.", append = TRUE)
+  cat("done connecting.\n", append = TRUE)
   return(onishDATA)
 }
 
@@ -79,10 +79,12 @@ dbReadTableCached = function(tableName, dbName, ...) {
     cat("Loaded cached data\n")
     return(data);
   }
-  cat("Not cached... Loading from database.")
+  cat(tableName, "not cached... Loading from database.\n")
   DBConnection = onishDBConnect(dbName)
   rowsAffected = dbExecute(DBConnection, paste("use", dbName)) # as in "use NishimuraLab"
-  data=dbReadTable(DBConnection, tableName, dbName) 
+  cat("reading table... ")
+  data=dbReadTable(DBConnection, tableName, dbName)
+  cat("done.\n", append = TRUE)
   dbDisconnect(DBConnection)
   saveCache(data, key=key)
   return(data)
