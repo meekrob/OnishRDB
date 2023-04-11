@@ -60,3 +60,22 @@ The following code confirms the creation of the object in your environment, and 
 > dim(DBPeakOverlaps)
 [1] 13703   474
 ```
+
+## Messages from Caching
+
+### DBPeakOverlaps
+
+DBPeakOverlaps has two cached objects: the database table and the aggregated tibble. If the tibble is missing from the cache, it will be recalculated.
+
+```
+> source("~/work/OnishRDB/DBPeakOverlaps.R")
+DBPeakOverlaps not cached... Checking for cached table from DB.
+loading be06092e7cfaa4ac714843997bf2d474.Rcache 
+total cache size: 32M	/Users/david/Library/Caches/org.R-project.R/R/R.cache
+combining overlaps...`summarise()` has grouped output by 'name'. You can override using the `.groups` argument.
+ 58M	/Users/david/Library/Caches/org.R-project.R/R/R.cache
+# A tibble: 10 × 10
+# Groups:   name [10]
+```
+
+If both the tibble and the database table are missing, the query will be made to download the table.
