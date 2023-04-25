@@ -93,6 +93,18 @@ The diagrams below are markdown-generated using "mermaid". The ddls are adapted 
 erDiagram
 
 
+promoters ||--|{ PromoterPeakOverlap : wompum
+promoters {
+char WBID PK "Wormbase ID"
+varchar GENE_NAME  "Like hom-1; elt-2"
+varchar geneName  ""
+varchar chrom  "Genome location chromosome (ce11)"
+int start  "Genome location 5’  (ce11)"
+int end  "Genome location 3’ (ce11)"
+char strand  "+/-"
+int intStrand  ""
+timestamp update_time  ""
+}
 
 modENCODEPeaks ||--|{ PromoterPeakOverlap : contains
 modENCODEPeaks {
@@ -122,18 +134,6 @@ float fractionPeak  "Bp overlap divided by base pairs peaks."
 timestamp update_time  "Timestamp of row change."
 }
 
-promoters ||--|{ PromoterPeakOverlap : contain
-promoters {
-char WBID PK "Wormbase ID"
-varchar GENE_NAME  "Like hom-1; elt-2"
-varchar geneName  ""
-varchar chrom  "Genome location chromosome (ce11)"
-int start  "Genome location 5’  (ce11)"
-int end  "Genome location 3’ (ce11)"
-char strand  "+/-"
-int intStrand  ""
-timestamp update_time  ""
-}
 ```
 
 #### Tables from WormBase
