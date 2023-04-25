@@ -113,4 +113,20 @@ allCounts {
   timestamp update_time 
 }
 
+dineenSetsAnalyzed {
+  int(11) WBINT  PK
+  char(14) WBID
+  float baseMean 
+  float log2FoldChange 
+  float lfcSE 
+  float stat 
+  float pvalue 
+  float padj 
+  varchar(45) wormbase_gseq 
+  varchar(45) wikigene_name 
+  varchar(45) status 
+  varchar(45) description
+  timestamp update_time 
+}
+
 ```
