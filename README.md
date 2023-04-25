@@ -215,4 +215,16 @@ float countsPerMillion
 timestamp update_time
 }
 
+
+intestineGeneCategories { 
+int idintestineGeneCategories PK
+char WBID 
+varchar altHypDESeq 
+varchar intestineExpression 
+varchar stage 
+float significanceCutoff 
+int WBINT 
+timestamp update_time
+}
+
 ```
