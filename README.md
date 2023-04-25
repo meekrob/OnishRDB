@@ -237,6 +237,9 @@ int embryo_GFPminus_rep2
 int embryo_whole_rep3
 int embryo_GFPplus_rep3
 int embryo_GFPminus_rep3
+}
+
+rawCounts(continued1) {
 int L1_whole_rep1
 int L1_cells_rep1
 int L1_GFPplus_rep1
@@ -249,6 +252,8 @@ int L1_whole_rep3
 int L1_cells_rep3
 int L1_GFPplus_rep3
 int L1_GFPminus_rep3
+
+rawCounts(continued2) {
 int L3_whole_rep1
 int L3_cells_rep1
 int L3_GFPplus_rep1
