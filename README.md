@@ -177,6 +177,7 @@ timestamp update_time
 ### Data from Dineen et al., that Rob reanalyzed
 
 ```mermaid
+
 erDiagram
 
 dineenSetsAnalyzed {
@@ -215,15 +216,6 @@ int elt2Delt7D_sorted_3
 timestamp update_time
 }
 
-PromoterPeakOverlap {
-int idPromoterPeakOverlap PK
-char promoterID 
-int peakID MUL
-int bpOverlap 
-float fractionPromoter 
-float fractionPeak 
-timestamp update_time 
-}
 ```
 
 ### Rob's raw data
@@ -309,6 +301,16 @@ varchar EvidenceCode
 text ExpressionPattern 
 char AnatomyAssociation 
 varchar WBSeqname 
+timestamp update_time 
+}
+
+PromoterPeakOverlap {
+int idPromoterPeakOverlap PK
+char promoterID 
+int peakID
+int bpOverlap 
+float fractionPromoter 
+float fractionPeak 
 timestamp update_time 
 }
 ```
