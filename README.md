@@ -264,3 +264,29 @@ float countsPerMillion
 timestamp update_time
 }
 ```
+
+
+
+### NishimuraLab
+```mermaid
+erDiagram
+
+modENCODEPeaks {
+int id_modENCODE_peaks PK
+varchar accession 
+char tfWBID 
+varchar GENE_NAME 
+varchar geneName 
+varchar stage 
+int version 
+varchar chrom 
+int start 
+int end 
+float val1 
+float negLog10_q 
+float val3 
+timestamp update_time 
+}
+
+
+```
