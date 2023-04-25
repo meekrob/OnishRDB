@@ -173,4 +173,46 @@ varchar stage
 timestamp update_time
 }
 
+rawCounts {
+int countsId PK
+int WBINT
+varchar WBID
+int embryo_cells_rep1
+int embryo_GFPplus_rep1
+int embryo_GFPminus_rep1
+int embryo_whole_rep2
+int embryo_cells_rep2
+int embryo_GFPplus_rep2
+int embryo_GFPminus_rep2
+int embryo_whole_rep3
+int embryo_GFPplus_rep3
+int embryo_GFPminus_rep3
+int L1_whole_rep1
+int L1_cells_rep1
+int L1_GFPplus_rep1
+int L1_GFPminus_rep1
+int L1_whole_rep2
+int L1_cells_rep2
+int L1_GFPplus_rep2
+int L1_GFPminus_rep2
+int L1_whole_rep3
+int L1_cells_rep3
+int L1_GFPplus_rep3
+int L1_GFPminus_rep3
+int L3_whole_rep1
+int L3_cells_rep1
+int L3_GFPplus_rep1
+int L3_GFPminus_rep1
+int L3_whole_rep2
+int L3_cells_rep2
+int L3_GFPminus_rep2
+int L3_GFPplus_rep2
+int L3_whole_rep3
+int L3_cells_rep3
+int L3_GFPplus_rep3
+int L3_GFPminus_rep3
+float countsPerMillion
+timestamp update_time
+}
+
 ```
