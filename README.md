@@ -92,8 +92,8 @@ The diagrams below are markdown-generated using "mermaid". The ddls are adapted 
 ```mermaid
 erDiagram
 
-PromoterPeakOverlap ||--|{ promoters : overlaps
-PromoterPeakOverlap ||--|{ modENCODEPeaks : overlaps
+PromoterPeakOverlap }|--|{ promoters : overlaps
+PromoterPeakOverlap }|--|{ modENCODEPeaks : overlaps
 PromoterPeakOverlap {
 int idPromoterPeakOverlap PK ""
 char promoterID  "WBGeneID"
