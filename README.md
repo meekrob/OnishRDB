@@ -288,5 +288,17 @@ float val3
 timestamp update_time 
 }
 
-
+AnatomyAssociation {
+int idAnatomyAssociation PK
+varchar WBID 
+varchar geneName 
+varchar Qualifier 
+varchar AnatomyTermID 
+varchar Reference 
+varchar EvidenceCode 
+text ExpressionPattern 
+char AnatomyAssociation 
+varchar WBSeqname 
+timestamp update_time 
+}
 ```
