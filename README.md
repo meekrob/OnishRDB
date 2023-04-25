@@ -92,8 +92,6 @@ The diagrams below are markdown-generated using "mermaid". The ddls are adapted 
 ```mermaid
 erDiagram
 
-PromoterPeakOverlap }|--|{ promoters : overlaps
-PromoterPeakOverlap }|--|{ modENCODEPeaks : overlaps
 PromoterPeakOverlap {
 int idPromoterPeakOverlap PK ""
 char promoterID  "WBGeneID"
@@ -104,6 +102,7 @@ float fractionPeak  "Bp overlap divided by base pairs peaks."
 timestamp update_time  "Timestamp of row change."
 }
 
+promoters }|--|{ modENCODEPeaks : overlaps
 promoters {
 char WBID PK "Wormbase ID"
 varchar GENE_NAME  "Like hom-1; elt-2"
