@@ -90,17 +90,17 @@ Data from or derived Williams et al., 2023.
 ```mermaid 
 erDiagram
 rlogCountsLong {
-  char WBID,
-  varchar GENE_NAME,
-  int WBINT,
-  varchar value,
-  varchar stage,
-  int replicate ,
-  varchar sampleSource,
-  varchar geneName,
+  char WBID 
+  varchar GENE_NAME
+  int WBINT
+  varchar value
+  varchar stage
+  int replicate 
+  varchar sampleSource
+  varchar geneName
   timestamp update_time
     }
 
-NishimuraLab
+
 
 ```
