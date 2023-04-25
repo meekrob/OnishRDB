@@ -314,23 +314,23 @@ float fractionPeak
 timestamp update_time 
 }
 
-Promoters {
-char WBID PK
-varchar GENE_NAME 
-varchar geneName 
-varchar chrom 
-int start 
-int end 
-char strand 
-int intStrand 
-timestamp update_time 
-}
-
 WTF3 {
 int WBINT PK
 char WBID 
 varchar geneName 
 timestamp update_time 
+}
+
+promoters {
+char WBID PK "Wormbase ID"
+varchar GENE_NAME  "Like hom-1; elt-2"
+varchar geneName  ""
+varchar chrom  "Genome location chromosome (ce11)"
+int start  "Genome location 5’  (ce11)"
+int end  "Genome location 3’ (ce11)"
+char strand  "+/-"
+int intStrand  ""
+timestamp update_time  ""
 }
 
 ```
