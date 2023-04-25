@@ -92,9 +92,9 @@ The diagrams below are markdown-generated using "mermaid". The ddls are adapted 
 ```mermaid
 erDiagram
 
-modENCODEPeaks ||--o{ PromoterPeakOverlap: many-to-many
+modENCODEPeaks ||--o{ PromoterPeakOverlap : many-to-many
 
-Promoters ||--o{ PromoterPeakOverlap: many-to-many
+Promoters ||--o{ PromoterPeakOverlap : many-to-many
 
 modENCODEPeaks {
 int id_modENCODE_peaks PK
