@@ -294,13 +294,13 @@ AnatomyAssociation {
 int idAnatomyAssociation PK ""
 varchar WBID  "WBGeneID"
 varchar geneName  "Gene Name"
-varchar Qualifier  "The column 4 "Qualifier" is one of four values specific to gene expression annotation: Certain, Uncertain, Partial, Enriched"
-varchar AnatomyTermID  "Column 5 reports an anatomy term ID from the WormBase anatomy ontology, e.g. "WBbt:0003679""
+varchar Qualifier  'The column 4 "Qualifier" is one of four values specific to gene expression annotation: Certain, Uncertain, Partial, Enriched'
+varchar AnatomyTermID  'Column 5 reports an anatomy term ID from the WormBase anatomy ontology, e.g. "WBbt:0003679"'
 varchar Reference  "Wormbase reference entry, has its own WB Accession convention."
-varchar EvidenceCode  "Column 7 defaults to the evidence code "IDA" for inferred from direct assay"
+varchar EvidenceCode  'Column 7 defaults to the evidence code "IDA" for inferred from direct assay'
 text ExpressionPattern  "Description of tissue expression?"
-char AnatomyAssociation  "Column 9 defaults to "A" for anatomy (as opposed to one of three branches of GO, "P", "F", or "C")"
-varchar WBSeqname  "Column 11 provides the gene's WormBase sequence name (e.g. "Y41E3.4") if not already used in column 3"
+char AnatomyAssociation  'Column 9 defaults to "A" for anatomy (as opposed to one of three branches of GO, "P", "F", or "C")'
+varchar WBSeqname  'Column 11 provides the gene's WormBase sequence name (e.g. "Y41E3.4") if not already used in column 3'
 timestamp update_time  "Timestamp for row update."
 }
 
