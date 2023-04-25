@@ -85,7 +85,10 @@ If both the tibble and the database table are missing, the query will be made to
 
 ## williams 2023
 
+
 Data from or derived Williams et al., 2023.
+
+### Most tables of interest
 
 ```mermaid 
 erDiagram
@@ -173,6 +176,23 @@ varchar stage
 timestamp update_time
 }
 
+
+intestineGeneCategories { 
+int idintestineGeneCategories PK
+char WBID 
+varchar altHypDESeq 
+varchar intestineExpression 
+varchar stage 
+float significanceCutoff 
+int WBINT 
+timestamp update_time
+}
+
+```
+
+### Rob's raw data
+
+```mermaid
 rawCounts {
 int countsId PK
 int WBINT
@@ -214,17 +234,4 @@ int L3_GFPminus_rep3
 float countsPerMillion
 timestamp update_time
 }
-
-
-intestineGeneCategories { 
-int idintestineGeneCategories PK
-char WBID 
-varchar altHypDESeq 
-varchar intestineExpression 
-varchar stage 
-float significanceCutoff 
-int WBINT 
-timestamp update_time
-}
-
 ```
