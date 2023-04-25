@@ -90,7 +90,7 @@ Data from or derived Williams et al., 2023.
 ```mermaid 
 erDiagram
 rlogCountsLong {
-  char WBID 
+  char WBID PK
   varchar GENE_NAME
   int WBINT
   varchar value
@@ -101,6 +101,16 @@ rlogCountsLong {
   timestamp update_time
     }
 
-
+allCounts {
+  int allCountsID PK
+  int WBINT
+   char WBID
+  float value
+  varchar stage
+  varchar sampleSource
+  int replicate
+  varchar transformation
+  timestamp update_time 
+}
 
 ```
