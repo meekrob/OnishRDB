@@ -34,6 +34,6 @@ for data_type, column_name, column_key, column_comment in cursor:
 
     column_comment = column_comment.replace('"','')
 
-    print("%s %s %s \'%s\'" % (data_type, column_name, column_key, column_comment))
+    print("%s %s %s \"%s\"" % (data_type, column_name, column_key, column_comment))
 
 print("}")
