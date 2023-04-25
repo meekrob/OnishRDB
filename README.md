@@ -85,7 +85,12 @@ If both the tibble and the database table are missing, the query will be made to
 
 ```mermaid 
 erDiagram
-williams2023
+williams2023 {
+        int city_id
+        string name
+        string state_abbreviation
+    }
+
 NishimuraLab
 
 ```
