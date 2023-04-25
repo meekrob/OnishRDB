@@ -220,6 +220,8 @@ timestamp update_time
 
 ### Rob's raw data
 
+All one table (rawCounts). The displayed '_stage' labels are for the graph display only.
+
 ```mermaid
 erDiagram
 
@@ -227,6 +229,11 @@ rawCounts {
 int countsId PK
 int WBINT
 varchar WBID
+float countsPerMillion
+timestamp update_time
+}
+
+rawCounts_embryo {
 int embryo_cells_rep1
 int embryo_GFPplus_rep1
 int embryo_GFPminus_rep1
@@ -239,7 +246,7 @@ int embryo_GFPplus_rep3
 int embryo_GFPminus_rep3
 }
 
-rawCounts_continued1 {
+rawCounts_L1 {
 int L1_whole_rep1
 int L1_cells_rep1
 int L1_GFPplus_rep1
@@ -254,7 +261,7 @@ int L1_GFPplus_rep3
 int L1_GFPminus_rep3
 }
 
-rawCounts_continued2 {
+rawCounts_L3 {
 int L3_whole_rep1
 int L3_cells_rep1
 int L3_GFPplus_rep1
@@ -267,8 +274,6 @@ int L3_whole_rep3
 int L3_cells_rep3
 int L3_GFPplus_rep3
 int L3_GFPminus_rep3
-float countsPerMillion
-timestamp update_time
 }
 ```
 
