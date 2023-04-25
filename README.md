@@ -118,41 +118,7 @@ allCounts {
 
 
 
-dineenSetsAnalyzed {
-  int(11) WBINT  PK
-  char(14) WBID
-  float baseMean 
-  float log2FoldChange 
-  float lfcSE 
-  float stat 
-  float pvalue 
-  float padj 
-  varchar(45) wormbase_gseq 
-  varchar(45) wikigene_name 
-  varchar(45) status 
-  varchar(45) description
-  timestamp update_time 
-}
 
-dineenSourceData {
-int WBINT PK
-char WBID 
-int wt_sorted_1 
-int wt_sorted_2 
-int wt_sorted_3 
-int wt_sorted_4 
-int elt7D_sorted_1 
-int elt7D_sorted_2 
-int elt7D_sorted_3 
-int elt2D_sorted_1 
-int elt2D_sorted_2 
-int elt2D_sorted_3 
-int elt2D_sorted_4 
-int elt2Delt7D_sorted_1 
-int elt2Delt7D_sorted_2 
-int elt2Delt7D_sorted_3 
-timestamp update_time
-}
 
 log2FoldChangeWide {
 int log2FoldChange_pk PK
@@ -190,9 +156,54 @@ timestamp update_time
 
 ```
 
+### Data from Dineen et al., that Rob reanalyzed
+
+```mermaid
+erDiagram
+
+dineenSetsAnalyzed {
+  int(11) WBINT  PK
+  char(14) WBID
+  float baseMean 
+  float log2FoldChange 
+  float lfcSE 
+  float stat 
+  float pvalue 
+  float padj 
+  varchar(45) wormbase_gseq 
+  varchar(45) wikigene_name 
+  varchar(45) status 
+  varchar(45) description
+  timestamp update_time 
+}
+
+dineenSourceData {
+int WBINT PK
+char WBID 
+int wt_sorted_1 
+int wt_sorted_2 
+int wt_sorted_3 
+int wt_sorted_4 
+int elt7D_sorted_1 
+int elt7D_sorted_2 
+int elt7D_sorted_3 
+int elt2D_sorted_1 
+int elt2D_sorted_2 
+int elt2D_sorted_3 
+int elt2D_sorted_4 
+int elt2Delt7D_sorted_1 
+int elt2Delt7D_sorted_2 
+int elt2Delt7D_sorted_3 
+timestamp update_time
+}
+
+```
+
 ### Rob's raw data
 
 ```mermaid
+erDiagram
+
 rawCounts {
 int countsId PK
 int WBINT
