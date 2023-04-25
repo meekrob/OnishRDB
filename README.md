@@ -92,6 +92,10 @@ The diagrams below are markdown-generated using "mermaid". The ddls are adapted 
 ```mermaid
 erDiagram
 
+modENCODEPeaks ||--o{ PromoterPeakOverlap: many-to-many
+
+Promoters ||--o{ PromoterPeakOverlap: many-to-many
+
 modENCODEPeaks {
 int id_modENCODE_peaks PK
 varchar accession 
@@ -118,10 +122,6 @@ float fractionPromoter  "Bp overlap divided by base pairs promoter."
 float fractionPeak  "Bp overlap divided by base pairs peaks."
 timestamp update_time  "Timestamp of row change."
 }
-```
-
-```mermaid
-erDiagram
 
 promoters {
 char WBID PK "Wormbase ID"
@@ -134,7 +134,6 @@ char strand  "+/-"
 int intStrand  ""
 timestamp update_time  ""
 }
-
 ```
 
 #### Tables from WormBase
@@ -223,10 +222,6 @@ allCounts {
   varchar transformation
   timestamp update_time 
 }
-
-
-
-
 
 log2FoldChangeWide {
 int log2FoldChange_pk PK
