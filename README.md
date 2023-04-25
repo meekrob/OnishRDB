@@ -79,3 +79,13 @@ combining overlaps...`summarise()` has grouped output by 'name'. You can overrid
 ```
 
 If both the tibble and the database table are missing, the query will be made to download the table.
+
+
+# Database design
+
+```mermaid 
+erDiagram
+williams2023
+NishimuraLab
+
+```
