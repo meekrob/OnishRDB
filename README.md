@@ -151,8 +151,7 @@ int elt2Delt7D_sorted_3
 timestamp update_time
 }
 
-log2FoldChangeWide
-{
+log2FoldChangeWide {
 int log2FoldChange_pk PK
 char WBID 
 varchar geneName 
