@@ -326,4 +326,11 @@ int intStrand
 timestamp update_time 
 }
 
+WTF3 {
+int WBINT PK
+char WBID 
+varchar geneName 
+timestamp update_time 
+}
+
 ```
