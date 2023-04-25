@@ -113,6 +113,8 @@ allCounts {
   timestamp update_time 
 }
 
+
+
 dineenSetsAnalyzed {
   int(11) WBINT  PK
   char(14) WBID
@@ -127,6 +129,26 @@ dineenSetsAnalyzed {
   varchar(45) status 
   varchar(45) description
   timestamp update_time 
+}
+
+dineenSourceData {
+int WBINT PK
+char WBID 
+int wt_sorted_1 
+int wt_sorted_2 
+int wt_sorted_3 
+int wt_sorted_4 
+int elt7D_sorted_1 
+int elt7D_sorted_2 
+int elt7D_sorted_3 
+int elt2D_sorted_1 
+int elt2D_sorted_2 
+int elt2D_sorted_3 
+int elt2D_sorted_4 
+int elt2Delt7D_sorted_1 
+int elt2Delt7D_sorted_2 
+int elt2Delt7D_sorted_3 
+timestamp update_time
 }
 
 ```
