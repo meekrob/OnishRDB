@@ -305,13 +305,13 @@ timestamp update_time
 }
 
 PromoterPeakOverlap {
-int idPromoterPeakOverlap PK
-char promoterID 
-int peakID
-int bpOverlap 
-float fractionPromoter 
-float fractionPeak 
-timestamp update_time 
+int idPromoterPeakOverlap PK ""
+char promoterID  "WBGeneID"
+int peakID  "PK of modENCODE_peaks"
+int bpOverlap  "Bp of overlap between peaks and promoters."
+float fractionPromoter  "Bp overlap divided by base pairs promoter."
+float fractionPeak  "Bp overlap divided by base pairs peaks."
+timestamp update_time  "Timestamp of row change."
 }
 
 WTF3 {
