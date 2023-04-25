@@ -220,7 +220,7 @@ timestamp update_time
 
 ### Rob's raw data
 
-All one table (rawCounts). The displayed '_stage' labels are for the graph display only.
+All one table (rawCounts). The displayed '_stage' labels are for the graph display only. Need to check up on embryo rep1 whole and rep3 cells.
 
 ```mermaid
 erDiagram
