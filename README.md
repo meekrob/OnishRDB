@@ -104,7 +104,7 @@ rlogCountsLong {
 allCounts {
   int allCountsID PK
   int WBINT
-   char WBID
+  char WBID
   float value
   varchar stage
   varchar sampleSource
