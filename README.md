@@ -313,4 +313,17 @@ float fractionPromoter
 float fractionPeak 
 timestamp update_time 
 }
+
+Promoters {
+char WBID PK
+varchar GENE_NAME 
+varchar geneName 
+varchar chrom 
+int start 
+int end 
+char strand 
+int intStrand 
+timestamp update_time 
+}
+
 ```
