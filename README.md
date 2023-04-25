@@ -270,6 +270,8 @@ timestamp update_time
 
 ### NishimuraLab
 
+#### modENCODE/modERN
+
 ```mermaid
 erDiagram
 
@@ -290,7 +292,10 @@ float val3
 timestamp update_time 
 }
 
+```
 
+```mermaid
+erDiagram
 
 PromoterPeakOverlap {
 int idPromoterPeakOverlap PK ""
@@ -323,8 +328,7 @@ timestamp update_time  ""
 
 ```
 
-### Tables from WormBase
-
+#### Tables from WormBase
 
 ``` mermaid
 erDiagram
@@ -342,4 +346,6 @@ char AnatomyAssociation  "Column 9 defaults to A for anatomy (as opposed to one 
 varchar WBSeqname  "Column 11 provides the gene's WormBase sequence name (e.g. Y41E3.4) if not already used in column 3"
 timestamp update_time  "Timestamp for row update."
 }
+
+
 ```
