@@ -151,4 +151,27 @@ int elt2Delt7D_sorted_3
 timestamp update_time
 }
 
+log2FoldChangeWide
+{
+int log2FoldChange_pk PK
+char WBID 
+varchar geneName 
+float baseMean 
+float log2FoldChange 
+float lfcSE 
+float stat_enriched 
+float stat_depleted 
+float stat_equal 
+float pvalue_enriched 
+float pvalue_depleted 
+float pvalue_equal 
+float padj_enriched 
+float padj_depleted 
+float padj_equal 
+varchar outcome_01 
+varchar outcome_05 
+varchar stage 
+timestamp update_time
+}
+
 ```
