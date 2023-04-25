@@ -122,7 +122,7 @@ float fractionPeak  "Bp overlap divided by base pairs peaks."
 timestamp update_time  "Timestamp of row change."
 }
 
-promoters ||--|{ PromoterPeakOverlap : contains
+promoters ||--|{ PromoterPeakOverlap : contain
 promoters {
 char WBID PK "Wormbase ID"
 varchar GENE_NAME  "Like hom-1; elt-2"
