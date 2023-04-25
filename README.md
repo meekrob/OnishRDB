@@ -83,12 +83,22 @@ If both the tibble and the database table are missing, the query will be made to
 
 # Database design
 
+## williams 2023
+
+Data from or derived Williams et al., 2023.
+
 ```mermaid 
 erDiagram
-williams2023 {
-        int city_id
-        string name
-        string state_abbreviation
+rlogCountsLong {
+  char WBID,
+  varchar GENE_NAME,
+  int WBINT,
+  varchar value,
+  varchar stage,
+  int replicate ,
+  varchar sampleSource,
+  varchar geneName,
+  timestamp update_time
     }
 
 NishimuraLab
