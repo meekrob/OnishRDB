@@ -92,16 +92,6 @@ The diagrams below are markdown-generated using "mermaid". The ddls are adapted 
 ```mermaid
 erDiagram
 
-PromoterPeakOverlap {
-int idPromoterPeakOverlap PK ""
-char promoterID  "WBGeneID"
-int peakID  "PK of modENCODE_peaks"
-int bpOverlap  "Bp of overlap between peaks and promoters."
-float fractionPromoter  "Bp overlap divided by base pairs promoter."
-float fractionPeak  "Bp overlap divided by base pairs peaks."
-timestamp update_time  "Timestamp of row change."
-}
-
 promoters }|--|{ modENCODEPeaks : overlaps
 promoters {
 char WBID PK "Wormbase ID"
@@ -113,6 +103,16 @@ int end  "Genome location 3’ (ce11)"
 char strand  "+/-"
 int intStrand  ""
 timestamp update_time  ""
+}
+
+PromoterPeakOverlap {
+int idPromoterPeakOverlap PK ""
+char promoterID  "WBGeneID"
+int peakID  "PK of modENCODE_peaks"
+int bpOverlap  "Bp of overlap between peaks and promoters."
+float fractionPromoter  "Bp overlap divided by base pairs promoter."
+float fractionPeak  "Bp overlap divided by base pairs peaks."
+timestamp update_time  "Timestamp of row change."
 }
 
 modENCODEPeaks {
