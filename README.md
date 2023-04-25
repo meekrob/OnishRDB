@@ -292,11 +292,6 @@ float val3
 timestamp update_time 
 }
 
-```
-
-```mermaid
-erDiagram
-
 PromoterPeakOverlap {
 int idPromoterPeakOverlap PK ""
 char promoterID  "WBGeneID"
@@ -306,13 +301,10 @@ float fractionPromoter  "Bp overlap divided by base pairs promoter."
 float fractionPeak  "Bp overlap divided by base pairs peaks."
 timestamp update_time  "Timestamp of row change."
 }
+```
 
-WTF3 {
-int WBINT PK
-char WBID 
-varchar geneName 
-timestamp update_time 
-}
+```mermaid
+erDiagram
 
 promoters {
 char WBID PK "Wormbase ID"
@@ -347,5 +339,19 @@ varchar WBSeqname  "Column 11 provides the gene's WormBase sequence name (e.g. Y
 timestamp update_time  "Timestamp for row update."
 }
 
+```
+
+#### Other tables
+
+```mermaid
+
+erDiagram
+
+WTF3 {
+int WBINT PK
+char WBID 
+varchar geneName 
+timestamp update_time 
+}
 
 ```
