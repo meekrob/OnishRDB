@@ -215,6 +215,15 @@ int elt2Delt7D_sorted_3
 timestamp update_time
 }
 
+PromoterPeakOverlap {
+int idPromoterPeakOverlap PK
+char promoterID 
+int peakID MUL
+int bpOverlap 
+float fractionPromoter 
+float fractionPeak 
+timestamp update_time 
+}
 ```
 
 ### Rob's raw data
