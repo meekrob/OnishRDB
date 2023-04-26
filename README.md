@@ -23,7 +23,7 @@ if (! require(dplyr)) {
 
 ## Usage
 
-Simply source the script accompanying the data object you want to import.
+Download and source the DB_connect.R and the script accompanying the data object you want to import.
 
 ### DBPeakOverlaps
 
