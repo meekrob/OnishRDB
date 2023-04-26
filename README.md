@@ -83,7 +83,4 @@ If both the tibble and the database table are missing, the query will be made to
 
 # Database design
 
-The diagrams below are markdown-generated using "mermaid". The ddls are adapted using python/table_ddl_to_mermaid.py
-
-
-
+See diagrams of the [design schematics](Database_design/README.md). 
