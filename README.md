@@ -27,6 +27,13 @@ Simply source the script accompanying the data object you want to import.
 
 ### DBPeakOverlaps
 
+
+#### database tables
+
+The table for this snippet [is described here.](Database_design#modencodemodern)
+
+#### R code
+
 DBPeakOverlaps.R defines an object DBPeakOverlaps by aggregating a table of peak/promoter intersections. The data are cached using `R.cache`, so sourcing the file again will just load the data from a cache location.
 
 ```
@@ -64,8 +71,6 @@ The following code confirms the creation of the object in your environment, and 
 ## Messages from Caching
 
 ### DBPeakOverlaps
-
-The table for this snippet [is described here.](Database_design#modencodemodern)
 
 DBPeakOverlaps has two cached objects: the database table and the aggregated tibble. If the tibble is missing from the cache, it will be recalculated.
 
