@@ -189,4 +189,89 @@ int L3_GFPminus_rep3
 }
 ```
 
+### NishimuraLab
+
+#### modENCODE/modERN
+
+```mermaid
+erDiagram
+
+promoters }|--|{ modENCODEPeaks : overlaps
+promoters {
+char WBID PK "Wormbase ID"
+varchar GENE_NAME  "Like hom-1; elt-2"
+varchar geneName  ""
+varchar chrom  "Genome location chromosome (ce11)"
+int start  "Genome location 5’  (ce11)"
+int end  "Genome location 3’ (ce11)"
+char strand  "+/-"
+int intStrand  ""
+timestamp update_time  ""
+}
+
+PromoterPeakOverlap {
+int idPromoterPeakOverlap PK ""
+char promoterID  "WBGeneID"
+int peakID  "PK of modENCODE_peaks"
+int bpOverlap  "Bp of overlap between peaks and promoters."
+float fractionPromoter  "Bp overlap divided by base pairs promoter."
+float fractionPeak  "Bp overlap divided by base pairs peaks."
+timestamp update_time  "Timestamp of row change."
+}
+
+modENCODEPeaks {
+int id_modENCODE_peaks PK
+varchar accession 
+char tfWBID 
+varchar GENE_NAME 
+varchar geneName 
+varchar stage 
+int version 
+varchar chrom 
+int start 
+int end 
+float val1 
+float negLog10_q 
+float val3 
+timestamp update_time 
+}
+
+
+```
+
+#### Tables from WormBase
+
+``` mermaid
+erDiagram
+
+AnatomyAssociation {
+int idAnatomyAssociation PK ""
+varchar WBID  "WBGeneID"
+varchar geneName  "Gene Name"
+varchar Qualifier  "The column 4 Qualifier is one of four values specific to gene expression annotation: Certain, Uncertain, Partial, Enriched"
+varchar AnatomyTermID  "Column 5 reports an anatomy term ID from the WormBase anatomy ontology, e.g. WBbt:0003679"
+varchar Reference  "Wormbase reference entry, has its own WB Accession convention."
+varchar EvidenceCode  "Column 7 defaults to the evidence code IDA for inferred from direct assay"
+text ExpressionPattern  "Description of tissue expression?"
+char AnatomyAssociation  "Column 9 defaults to A for anatomy (as opposed to one of three branches of GO, P, F, or C)"
+varchar WBSeqname  "Column 11 provides the gene's WormBase sequence name (e.g. Y41E3.4) if not already used in column 3"
+timestamp update_time  "Timestamp for row update."
+}
+
+```
+
+#### Other tables
+
+```mermaid
+
+erDiagram
+
+WTF3 {
+int WBINT PK
+char WBID 
+varchar geneName 
+timestamp update_time 
+}
+
+```
 
