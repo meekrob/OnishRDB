@@ -65,6 +65,8 @@ The following code confirms the creation of the object in your environment, and 
 
 ### DBPeakOverlaps
 
+The table for this snippet [is described here.](Database_design#modencodemodern)
+
 DBPeakOverlaps has two cached objects: the database table and the aggregated tibble. If the tibble is missing from the cache, it will be recalculated.
 
 ```
