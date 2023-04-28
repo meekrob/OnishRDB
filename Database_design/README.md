@@ -1,4 +1,4 @@
-# design 
+# Design 
 The diagrams below are markdown-generated using "mermaid".
  The ddls are adapted using [table_ddl_to_mermaid.py](../python/table_ddl_to_mermaid.py). 
 
