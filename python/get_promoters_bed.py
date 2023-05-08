@@ -3,8 +3,6 @@
 import sys
 import mysql.connector as mariadb
 
-limit = None # set to None for None
-
 connection = mariadb.connect(
     host="129.82.125.11",
     port="3307",
@@ -13,13 +11,7 @@ connection = mariadb.connect(
     )
 
 cursor = connection.cursor()
-tablename = "promoter"
-
-
 stmt = "select chrom, start, end, CONCAT(geneName, ':', WBID), 1000, strand from promoters order by chrom, start"
-
-if limit is not None:
-    stmt += " LIMIT %d" % limit
 
 cursor.execute(stmt)
 
