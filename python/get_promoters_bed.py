@@ -8,8 +8,7 @@ limit = None # set to None for None
 connection = mariadb.connect(
     host="129.82.125.11",
     port="3307",
-    user="root",
-    password="candleWax1!",
+    user="worm",
     database="NishimuraLab"
     )
 
