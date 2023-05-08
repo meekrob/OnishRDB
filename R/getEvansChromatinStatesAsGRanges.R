@@ -6,8 +6,8 @@ library(GenomicRanges)
 source('DB_connect.R')
 
 # load saved table if available
-evansChromatinStates = dbReadTableCached("evansChromatinStates", "NishimuraLab")
-evansChromatinStates %<>% select(-id_evansChromatinStates, update_time)
-head(evansChromatinStates)  
-gr = GRanges(evansChromatinStates)
-head(gr)
+evansChromatinStates.df = dbReadTableCached("evansChromatinStates", "NishimuraLab")
+evansChromatinStates.df %<>% select(-id_evansChromatinStates, update_time)
+head(evansChromatinStates.df)  
+evansChromatinStates.gr = GRanges(evansChromatinStates.df)
+head(evansChromatinStates.gr)
