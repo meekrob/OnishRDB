@@ -1,5 +1,6 @@
 import sys,re,csv
 import pickle
+from anyascii import anyascii
 
 # a dict of WBIDs keyed on geneNames
 with open("geneNames.pickle", "rb") as pickin:
@@ -12,7 +13,15 @@ class CGCStrainEntry:
     def __init__(self, line):
         self.line = line
         self.fields = next( csv.reader([line], quotechar='"', delimiter=',', quoting=csv.QUOTE_ALL) )
-        self.strain_name, self.genotype, self.species_name, self.description = self.fields
+        try:
+            self.strain_name, self.genotype, self.species_name, self.description = self.fields
+            conv_description = anyascii(self.description.replace('’',"'").replace('—','-').replace('–','-') ) 
+            if conv_description != self.description:
+                self.description = conv_description
+        except ValueError:
+            print(line, file=sys.stderr)
+            print(self.fields, file=sys.stderr)
+            raise
         self.parsed_genotype = ''
 
         self.parseErrors = []
@@ -40,6 +49,14 @@ class CGCStrainEntry:
             else:
                 self.other.append( part )
 
+    def getParseErrors(self):
+        for error in self.parseErrors: 
+            yield error
+        for fusion_obj in self.constructs: 
+            for parseError in fusion_obj.parseErrors:
+                yield parseError
+            
+
     def parse_description_genotype(self):
         # this is the nomenclature enclosed in brackets in the description field
         description = self.description
@@ -49,9 +66,9 @@ class CGCStrainEntry:
             self.parsed_genotype = description[(leftBracket_i+1):rightBracket_i]
         except ValueError:
             try: 
-                leftBracket_i = genotype.index('[')
-                rightBracket_i = genotype.index(']')
-                self.parsed_genotype = genotype[(leftBracket_i+1):rightBracket_i]
+                leftBracket_i = self.genotype.index('[')
+                rightBracket_i = self.genotype.index(']')
+                self.parsed_genotype = self.genotype[(leftBracket_i+1):rightBracket_i]
             except ValueError:
                 self.parseErrors.append( " ".join(["Can't parse genotype: unclosed brackets in description"]))
 
@@ -71,7 +88,14 @@ class CGCStrainEntry:
 %s
 \tOTHER: %s
 \tDESCRIPTION: %s
-""" % (self.strain_name, self.genotype, self.parsed_genotype, self.species_name, len(self.constructs), construct_str, ",".join(self.other), self.description)
+\tPARSE ERRORS: %s
+""" % (self.strain_name, self.genotype, self.parsed_genotype, self.species_name, 
+        len(self.constructs), 
+        construct_str, 
+        ",".join(self.other), 
+        self.description, 
+        "\n".join( list( self.getParseErrors()) )
+        )
 
 class Fusion:
     def __init__(self, fusionParts): # call with Fusion( genotype.split('::') )
@@ -97,6 +121,9 @@ class Fusion:
 
         self.tags = list( filter( lambda x: x.is_tag(), self.fusionParts ) )
         self.fusion_genes = list( filter( lambda x: x.is_translational_fusion(), self.fusionParts ) )
+
+    def getParseErrors(self):
+        return self.parseErrors
 
     def getNames(self):
         for f in self.fusionParts: yield f.name
@@ -155,7 +182,7 @@ class FusionPart:
         return bool(self.tag)
 
     def parse(self):
-        self.name = FusionPart.remove_parenthetical(self.label)
+        self.name = FusionPart.remove_parenthetical(self.label).strip()
 
         if bool(TAG_RE.match(self.name)):
             self.tag = self.name
@@ -174,19 +201,22 @@ class FusionPart:
             
     def get_status(self):
         if self.is_transcriptional_fusion():
-            if self.unknown:
-                return "UNKp"
+            if self.wbid is None:
+                return "UNKNOWN p"
             else:
-                return "PROM"
+                return self.wbid + ' p'
         if self.is_tag():
             return "tag"
-        if self.unknown:
-            return "UNK"
+        else:
+            if self.wbid is None:
+                return "UNKNOWN"
+            else:
+                return self.wbid
 
-        return "TRN" 
+        return "???" 
 
     def __str__(self):
-        return "%s:%s(%s)" % (self.name, self.wbid, self.get_status())
+        return "%s:%s" % (self.name, self.get_status())
         
 
     def findGeneID(self, query):
