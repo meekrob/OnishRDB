@@ -17,11 +17,6 @@ def parse_real_genotype(real_genotype): # the real_genotype is in brackets in th
     is_genename = map(lambda g: g in GENENAMES, combo)
     
 
-def parse_construct(s):
-    if s.find('GFP') > -1:
-        construct = s.split("::")
-        ix = construct.index('GFP')
-
 def cleanup(s):
     try:
         s = s.rstrip('p').rstrip('a')

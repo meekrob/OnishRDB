@@ -1,4 +1,4 @@
-import sys,re
+import sys,re,csv
 import pickle
 
 # a dict of WBIDs keyed on geneNames
@@ -7,6 +7,71 @@ with open("geneNames.pickle", "rb") as pickin:
 
 PAREN_RE = re.compile('\(.+\)')
 TAG_RE = re.compile('tagRFP|RFP|mRFP|mNeonGreen|wCherry|vhhGFP4|FLAG|tdTomato|mRuby|eGFP|GFP|YFP|mCherry', re.IGNORECASE)
+
+class CGCStrainEntry:
+    def __init__(self, line):
+        self.line = line
+        self.fields = next( csv.reader([line], quotechar='"', delimiter=',', quoting=csv.QUOTE_ALL) )
+        self.strain_name, self.genotype, self.species_name, self.description = self.fields
+        self.parsed_genotype = ''
+
+        self.parseErrors = []
+        self.constructs = [] # contains '::' delimiters
+        self.other = [] # doesn't contain '::' delimiters
+
+    def parse_genotype(self):
+        self.parse_description_genotype()
+        self.parse_constructs()
+
+    def parse_constructs(self):
+        parts = self.parsed_genotype.split(' + ')
+        for i,part in enumerate(parts):
+            if part.find('::') > -1:
+                fusionParts = []
+                for bit in part.split('::'):
+                    fusionParts.append( FusionPart( bit ) )
+
+                try:
+                    fusion = Fusion( fusionParts )
+                    self.constructs.append( fusion )
+                except ValueError as v:
+                    self.parseErrors.append( "Error parsing Fusion( fusionParts )") 
+                    continue
+            else:
+                self.other.append( part )
+
+    def parse_description_genotype(self):
+        # this is the nomenclature enclosed in brackets in the description field
+        description = self.description
+        try:
+            leftBracket_i = description.index('[')
+            rightBracket_i = description.index(']')
+            self.parsed_genotype = description[(leftBracket_i+1):rightBracket_i]
+        except ValueError:
+            try: 
+                leftBracket_i = genotype.index('[')
+                rightBracket_i = genotype.index(']')
+                self.parsed_genotype = genotype[(leftBracket_i+1):rightBracket_i]
+            except ValueError:
+                self.parseErrors.append( " ".join(["Can't parse genotype: unclosed brackets in description"]))
+
+
+    def __str__(self):
+        construct_str = ""
+        if len(self.constructs) > 0:
+            for construct in self.constructs:
+                for part in construct:
+                    construct_str += "\t\t" + str(part) + "\n"
+        
+        return """STRAIN: %s
+\tGENOTYPE: %s
+\tGENOTYPE (parsed): %s
+\tSPECIES: %s
+\tCONSTRUCTS: %d
+%s
+\tOTHER: %s
+\tDESCRIPTION: %s
+""" % (self.strain_name, self.genotype, self.parsed_genotype, self.species_name, len(self.constructs), construct_str, ",".join(self.other), self.description)
 
 class Fusion:
     def __init__(self, fusionParts): # call with Fusion( genotype.split('::') )
