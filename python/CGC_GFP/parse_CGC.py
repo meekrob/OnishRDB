@@ -39,12 +39,22 @@ def cleanup(s):
 max_desc_length = 0
 with open(sys.argv[1]) as CSV:
     lines = CSV.readlines()
+    max_strain_name_len = 0
+    max_description_len = 0
+    max_genotype_len = 0
+    max_parsed_genotype_len = 0
+
     for line in csv.reader(lines, quotechar='"', delimiter=',', quoting=csv.QUOTE_ALL):
         fields = line
         strain_name,genotype,species_name,description = fields
 
         # Some Briggsae and E.coli are present in input
         if species_name.find('elegans') < 0: continue
+
+        max_strain_name_len = max(max_strain_name_len, len(strain_name))
+        max_strain_name_len = max(max_strain_name_len, len(strain_name))
+        max_description_len = max(max_description_len, len(description))
+        max_genotype_len = max(max_genotype_len, len(genotype))
 
         if strain_name in FIXES:
             search_str,replacement = FIXES[strain_name]
@@ -81,6 +91,9 @@ with open(sys.argv[1]) as CSV:
             except ValueError:
                 print("UNCLOSED BRACKETS FOR STRAIN", strain_name, "with DESCRIPTION:", description, file=sys.stderr)
                 continue
+
+
+        max_parsed_genotype_len = max(max_parsed_genotype_len, len(real_genotype))
         
         # ignore selection marker
         parts = real_genotype.split(' + ')
@@ -103,5 +116,10 @@ with open(sys.argv[1]) as CSV:
 
             #else:
                 #print("skipping part without '::'", strain_name, "with", part, file=sys.stderr) # a selection gene 
+
+    print("max_strain_name_len",max_strain_name_len,file=sys.stderr)
+    print("max_genotype_len", max_genotype_len, file=sys.stderr)
+    print("max_parsed_genotype_len", max_parsed_genotype_len, file=sys.stderr)
+    print("max_description_len", max_description_len, file=sys.stderr)
 
 
