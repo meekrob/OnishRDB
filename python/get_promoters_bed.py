@@ -18,3 +18,5 @@ cursor.execute(stmt)
 with open("promoters.bed", "w") as promoter_out:
     for fields in cursor:
         print(*fields, sep="\t", file=promoter_out)
+
+
