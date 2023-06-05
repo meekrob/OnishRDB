@@ -21,3 +21,4 @@ cursor.execute(stmt)
 for fields in cursor:
     print(*fields)
 
+connection.close()
