@@ -3,8 +3,6 @@
 import sys, pickle
 import mysql.connector as mariadb
 
-
-
 connection = mariadb.connect(
     host="129.82.125.11",
     port="3307",
@@ -13,10 +11,12 @@ connection = mariadb.connect(
     )
 
 cursor = connection.cursor()
-stmt = "select geneName from promoters"
+stmt = "select geneName,WBID from promoters"
 cursor.execute(stmt)
 
-geneNames = [ x[0] for x in cursor.fetchall() ]
+geneNames = {}
+for fields in cursor:
+    geneNames[ fields[0] ] = fields[1]
 
 connection.close()
 with open("geneNames.pickle", "wb") as pickout:
