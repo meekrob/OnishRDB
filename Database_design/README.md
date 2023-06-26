@@ -8,7 +8,7 @@ The diagrams below are markdown-generated using "mermaid".
 ## williams 2023
 
 
-Data from or derived Williams et al., 2023.
+Data in or derived from Williams et al., 2023.
 
 ### Most tables of interest
 
