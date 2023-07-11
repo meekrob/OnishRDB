@@ -5,20 +5,18 @@ import mysql.connector as mariadb
 
 password = getpass.getpass("MariaDB password for root> ")
 
-connection = mariadb.connect(
+with mariadb.connect(
     host="129.82.125.11",
     port="3307",
     user="root",
     password=password,
     database="NishimuraLab"
-    )
+    ) as connection:
 
-stmt = "show engine innodb status;"
-cursor = connection.cursor()
-cursor.execute(stmt)
+    stmt = "show engine innodb status;"
+    cursor = connection.cursor()
+    cursor.execute(stmt)
 
 
-for fields in cursor:
-    print(*fields)
-
-connection.close()
+    for fields in cursor:
+        print(*fields)
