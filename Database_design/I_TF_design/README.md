@@ -21,7 +21,8 @@ timestamp update_time
 ```mermaid
 erDiagram
 
-ITF {
+
+"I_TF" {
 
 int ID PK 
 
