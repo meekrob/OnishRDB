@@ -36,4 +36,23 @@ float L1
 float L3 
 timestamp update_time 
 }
+
+```mermaid
+erDiagram
+
+
+rawCounts_L1 {
+int L1_whole_rep1
+int L1_cells_rep1
+int L1_GFPplus_rep1
+int L1_GFPminus_rep1
+int L1_whole_rep2
+int L1_cells_rep2
+int L1_GFPplus_rep2
+int L1_GFPminus_rep2
+int L1_whole_rep3
+int L1_cells_rep3
+int L1_GFPplus_rep3
+int L1_GFPminus_rep3
+}
 ```
