@@ -22,7 +22,7 @@ timestamp update_time
 erDiagram
 
 
-"I_TF" {
+`I_TF` {
 
 int ID PK 
 
