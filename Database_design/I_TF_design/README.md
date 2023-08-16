@@ -24,8 +24,8 @@ erDiagram
 
 `I_TF` {
 
-int ID PK ""
-varchar WBID  ""
+int ID PK 
+varchar WBID  
 
 }
 ```
