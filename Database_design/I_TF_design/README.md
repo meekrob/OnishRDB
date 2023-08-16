@@ -1,19 +1,70 @@
 ```mermaid
 erDiagram
+rLogCountsGFPplus {
+int WBINT PK
+char WBID 
+float embryo_rep1 
+float embryo_rep2 
+float embryo_rep3 
+float L1_rep1 
+float L1_rep3 
+float L3_rep1 
+float L3_rep2 
+float L3_rep3 
+float embryo 
+float L1 
+float L3 
+timestamp update_time 
+}
+```
+
+What if I add some shit here?
+
+```mermaid
+erDiagram
+
+rawCounts {
+int countsId PK
+int WBINT
+varchar WBID
+float countsPerMillion
+timestamp update_time
+}
+
 
 I_TF {
+int WBINT PK
+char WBID 
+float embryo_rep1 
+float embryo_rep2 
+float embryo_rep3 
+float L1_rep1 
+float L1_rep3 
+float L3_rep1 
+float L3_rep2 
+float L3_rep3 
+float embryo 
+float L1 
+float L3 
+timestamp update_time 
+}
 
-int ID PK ""
+```mermaid
+erDiagram
 
-varchar WBID  ""
 
-varchar Genename UNI ""
-
-varchar AnatomyTermID  ""
-
-tinyint In_WTF  ""
-
-tinyint In_modENCODE  ""
-
+rawCounts_L1 {
+int L1_whole_rep1
+int L1_cells_rep1
+int L1_GFPplus_rep1
+int L1_GFPminus_rep1
+int L1_whole_rep2
+int L1_cells_rep2
+int L1_GFPplus_rep2
+int L1_GFPminus_rep2
+int L1_whole_rep3
+int L1_cells_rep3
+int L1_GFPplus_rep3
+int L1_GFPminus_rep3
 }
 ```
