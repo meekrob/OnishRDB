@@ -22,7 +22,17 @@ What if I add some shit here?
 
 ```mermaid
 erDiagram
-`I_TF` {
+
+rawCounts {
+int countsId PK
+int WBINT
+varchar WBID
+float countsPerMillion
+timestamp update_time
+}
+
+
+I_TF {
 int WBINT PK
 char WBID 
 float embryo_rep1 
