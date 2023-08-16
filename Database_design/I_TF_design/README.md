@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
 
 I_TF {
@@ -15,3 +16,4 @@ tinyint In_WTF  ""
 tinyint In_modENCODE  ""
 
 }
+```
