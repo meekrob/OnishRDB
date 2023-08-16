@@ -20,7 +20,7 @@ timestamp update_time
 
 ```mermaid
 erDiagram
-`I_TF` {
+ITF {
 int WBINT PK
 char WBID 
 float embryo_rep1 
